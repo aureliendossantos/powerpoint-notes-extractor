@@ -26,7 +26,7 @@ Après deux retours à la ligne, les notes sont ignorées par l'outil.
    ```
    python -m pip install python-docx
    ```
-3. Téléchargez le fichier <a href="https://raw.githubusercontent.com/aureliendossantos/powerpoint-notes-extractor/main/extract_script.py" download>`extract_script.py`</a> et placez-le dans le même dossier que vos fichiers PowerPoint.
+3. Téléchargez le fichier <a href="https://raw.githubusercontent.com/aureliendossantos/powerpoint-notes-extractor/main/extract_script.py" download>`extract_script.py`</a> (clic droit → Enregistrer le lien sous) et placez-le dans le même dossier que vos fichiers PowerPoint.
 4. Double-cliquez sur le fichier `extract_script.py`. Si vous y êtes invité, choisissez de l'ouvrir avec Python.
 
 # [EN] PowerPoint Notes Extractor
@@ -57,5 +57,5 @@ These are other notes discarded by the tool.
    ```
    python -m pip install python-docx
    ```
-3. Download the <a href="https://raw.githubusercontent.com/aureliendossantos/powerpoint-notes-extractor/main/extract_script.py" download>`extract_script.py`</a> file and put it in the same folder as your PowerPoint files.
+3. Download the <a href="https://raw.githubusercontent.com/aureliendossantos/powerpoint-notes-extractor/main/extract_script.py" download>`extract_script.py`</a> file (right click → Save link as) and put it in the same folder as your PowerPoint files.
 4. Double-click on the `extract_script.py` file. If prompted, choose to open it with Python.
