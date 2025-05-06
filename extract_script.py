@@ -3,6 +3,15 @@ import re
 from pptx import Presentation
 from docx import Document
 
+def clean_xml_string(s):
+    # Supprime les caractères de contrôle ASCII (0–8, 11–12, 14–31) et NULL (\x00)
+    return re.sub(r'[\x00-\x08\x0B\x0C\x0E-\x1F]', '', s)
+
+def normalize_line_endings(s):
+    # Remplace tous les types de sauts de ligne par un seul \n
+    # Attention, il reste certains sauts de ligne dans PowerPoint qui sont affichés collés dans la string renvoyée, pour une raison que j'ignore
+    return re.sub(r'\r\n?|\u0085|\u2028|\u2029', '\n', s)
+
 def list_pptx_files():
     """Lists all .pptx files in the current directory."""
     return [f for f in os.listdir() if f.endswith(".pptx")]
@@ -45,7 +54,8 @@ def extract_script_from_notes(pptx_path, output_filename):
         if not slide.notes_slide or not slide.notes_slide.notes_text_frame.text.strip():
             continue
 
-        notes_text = slide.notes_slide.notes_text_frame.text.strip()
+        notes_text = clean_xml_string(normalize_line_endings(slide.notes_slide.notes_text_frame.text)).strip()
+        print(repr(slide.notes_slide.notes_text_frame.text))
         matches = re.findall(r"## (.*?)\n(.*?)(?=\n\n|\Z)", notes_text, re.DOTALL)
 
         if not matches:
