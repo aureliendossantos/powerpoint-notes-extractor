@@ -55,7 +55,6 @@ def extract_script_from_notes(pptx_path, output_filename):
             continue
 
         notes_text = clean_xml_string(normalize_line_endings(slide.notes_slide.notes_text_frame.text)).strip()
-        print(repr(slide.notes_slide.notes_text_frame.text))
         matches = re.findall(r"## (.*?)\n(.*?)(?=\n\n|\Z)", notes_text, re.DOTALL)
 
         if not matches:
@@ -74,9 +73,9 @@ def extract_script_from_notes(pptx_path, output_filename):
         doc.save(output_filename)
 
 def main():
-    print("PowerPoint Script Extractor")
-    print("---------------------------")
-    print("Warning: This tool will overwrite existing Word files. Please close any open Word documents before proceeding.")
+    print("\033[36mPowerPoint Script Extractor\033[0m")
+    print("\033[36m---------------------------\033[0m")
+    print("\033[31mWarning: \033[0mThis tool will overwrite existing Word files. \033[31mPlease close any open Word documents\033[0m before proceeding.")
     pptx_file = choose_pptx_file()
     
     if pptx_file:
@@ -84,7 +83,7 @@ def main():
         extract_script_from_notes(pptx_file, output_filename)
 
         print(f"Script extracted successfully! Saved as {output_filename}")
-        print("Press Enter to exit.")
+        print("\033[36mPress Enter to exit.\033[0m")
         input()
 
 if __name__ == "__main__":
